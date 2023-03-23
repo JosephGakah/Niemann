@@ -1,5 +1,6 @@
 import click
 from flask import current_app, g
+import sqlite3
 
 def init_db():
     db = get_db()
