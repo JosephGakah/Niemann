@@ -165,6 +165,9 @@
 
     </header>
     <!-- ========== End Menu ========== -->
+
+    {% block header %}{% endblock %}
+    
     {% block content %}{% endblock %}
 
     {% for message in get_flashed_messages() %}
@@ -177,9 +180,6 @@
 <div id="dsn_cursor" class="ball"></div>
 <div id="dsn_cursor_inner" class="ball"></div>
 <!-- ========== End Cursor ========== -->
-
-
-<!-- ========== End Style Option Page ========== -->
 
 <!-- ========== Line BG ========== -->
 <div id="line_head"><span class="container"></span></div>
