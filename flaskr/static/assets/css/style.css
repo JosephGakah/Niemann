@@ -235,6 +235,35 @@ body:not(.dsn-cursor-effect) #dsn_cursor, body:not(.dsn-cursor-effect) #dsn_curs
   font-size: 8vw;
 }
 
+
+.loader{
+  position: absolute;
+  left:50%;
+  margin-top:2rem;
+  transform: translate(-50%, -50%);
+  height:5px;
+  width:15rem;
+  background-color: transparent;
+}
+.loading{
+  background-color: white;  
+  width:5rem;
+  height:5px;
+  animation: animation 1.8s infinite;
+}
+
+@keyframes animation {
+    0% {
+        transform: translateX(0rem);
+    }
+    50% {
+        transform: translateX(10rem);
+    }
+    100% {
+        transform: translateX(0rem);
+    }
+  }
+
 #dsn_preloader {
   position: fixed;
   width: 100vw;
