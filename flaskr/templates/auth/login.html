@@ -1,15 +1,99 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Log In{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-    <input type="submit" value="Log In">
-  </form>
+
+<header id="dsn_header" class="dsn-header-animation dsn-full-header dsn-container section-padding header-normal">
+  <div class="entry-header p-relative over-hidden">
+      <div id="hero_image" class="p-absolute dsn-hero-parallax-img over-hidden z-index-0 full-width" data-dsn-ajax="img" data-overlay="2">
+          <img class="cover-bg-img transform-3d" src="{{ url_for('static', filename='assets/img/stories.jpg') }}" alt="">
+      </div>
+      <div class="d-grid grid-md-2 p-relative">
+          <div id="hero_content" class="d-flex p-relative h-100 dsn-hero-parallax-title dsn-container align-items-center pb-section pb-col">
+              <div class="content p-relative">
+                  <div class="intro-project w-100">
+                      <div class="intro-title ">
+                          <div id="hero_title" class="mt-20">
+                              <h1 class="title">
+                                  Niemann Stories<br>
+                                  Those who tell the stories rule the world
+                              </h1>
+                          </div>
+                          <p class="mt-20 max-w570">
+                             Do not have an account?
+                          </p>
+                          <div class="dsn-def-btn dsn-hover-icon dsn-icon-heading-color mt-20 d-flex">
+                              <a class="dsn-btn dsn-border border-color-default  background-section effect-ajax has-icon-left"
+                                 href="/auth/register" data-dsn-text="REGISTER">
+                                  <span class="dsn-icon dsn-bg-before btn-icon-left heading-color z-index-1">
+                                  </span>
+                                  <span class="title-btn p-relative  z-index-1 ">
+                                      REGISTER
+                                  </span>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div id="hero_content" class="d-flex p-relative contact-form over-hidden container align-items-center h-100 dsn-hero-parallax-title pb-section">
+              <div class="content box-form">
+                  <h2 class="title-h2 ">
+                      {% block title %}
+                        LOG IN
+                      {% endblock %}
+                  </h2>
+                  <p class="mt-10">Enter your details.</p>
+                  <div class="dsn-form mt-20 form-box d-flex flex-column">
+                      <form id="contact-form" class="form w-100" method="post" action=""
+                            data-toggle="validator">
+                          <div class="messages"></div>
+                          <div class="input__wrap controls">
+                              <div class="form-group dsn-up">
+                                  <div class="entry-box">
+                                      <input id="username" type="text" name="username" placeholder="Type your name"
+                                      required="required"
+                                      data-error="name is required."
+                                      />
+                                  </div>
+                                  <div class="help-block with-errors"></div>
+                              </div>
+                              <div class="form-group dsn-up">
+                                  <div class="entry-box">
+                                      <input id="password" type="text" name="password" placeholder="Type your name"
+                                      required="required"
+                                      data-error="name is required."
+                                      />
+                                  </div>
+                                  {% if error %}
+                                  <div class="help-block with-errors">
+                                    
+                                  </div>
+                                  {% endif %}
+                              </div>
+                              <div class="image-zoom move-circle border-color-default border-style border-rdu bg-blue"
+                                   data-dsn="parallax">
+                                  <input type="submit" value="Log in">
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+
+  <a class="background-main move-circle link-project p-absolute dsn-parallax-hover" href="/" target="_blank" rel="nofollow" style="right: 120px;">
+      VISIT SITE
+      <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <path d="M213.333333 750.506667L665.173333 298.666667H384V213.333333h426.666667v426.666667h-85.333334V358.826667L273.493333 810.666667 213.333333 750.506667z"></path>
+      </svg>
+
+      <div class="icon-circle" style="min-width: 1px;"></div>
+  </a>
+
+</header>
+
 {% endblock %}
