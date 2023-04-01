@@ -48,40 +48,15 @@
                 </div>
                 <div class="right-box">
                     <p class="max-w570">
-                        qProin faucibus nec mauris a sodales, sed elementum mi tincidunt. Sed eget viverra
-                        egestas
+                        {% set f = post['body'] %}
+                        {{ f[:100] }}
                     </p>
                     <div class="metas has-separates fz-14 blog-category mt-5">
-                        <span class="mt-10">Uncategorized</span>
+                        <span class="mt-10">Read More</span>
                     </div>
                 </div>
             </div>
         </article>
-        {% if not loop.last %}
-        <article class="blog-item p-relative pt-50 pb-50 border-bottom">
-            <div class="blog-item-inner p-relative">
-                <div class="left-box">
-                    <a href="/" class="effect-ajax word-wrap" rel="bookmark">
-                        <h4 class="title-block">Wildlife could be amazing, see why. </h4>
-                    </a>
-
-                    <div class="link mt-15">
-                        <span class="font-caps heading-color"> June 12, 2022 </span>
-                    </div>
-                </div>
-                <div class="right-box">
-                    <p class="max-w570">
-                        qProin faucibus nec mauris a sodales, sed elementum mi tincidunt. Sed eget viverra
-                        egestas
-                    </p>
-                    <div class="metas has-separates fz-14 blog-category mt-5">
-                        <span class="mt-10">Uncategorized</span>
-                    </div>
-                </div>
-            </div>
-        </article>
-          <hr>
-        {% endif %}
         {% endfor %}
 
         <div class="type-p-nav">
