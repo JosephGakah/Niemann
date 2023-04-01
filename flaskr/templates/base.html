@@ -6,8 +6,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="{{ url_for('static', filename='assets/img/logo-32x32.png') }}" sizes="32x32"/>
-    <link rel="icon" href="{{ url_for('static', filename='assets/img/logo-192x192.png') }}" sizes="192x192"/>
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/lg.png') }}" sizes="32x32"/>
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/lg.png') }}" sizes="192x192"/>
 
     <title>{% block title %}{% endblock %} - Inspai</title>
 
@@ -24,26 +24,26 @@
     <div class="dsnload p-absolute">
         <span class="dsnload__row">
             <span class="dsnload__img">
-            <img src="{{ url_for('static', filename='assets/img/lg-l.png') }}" class="logo-dark" alt="InspAi" decoding="async" loading="lazy"/>
-            <img src="{{ url_for('static', filename='assets/img/lg.png') }}" class="logo-light" alt="InspAi" decoding="async" loading="lazy"/>
+            <img src="{{ url_for('static', filename='assets/img/lg.png') }}" class="logo-dark" alt="InspAi" decoding="async" loading="lazy"/>
+            <img src="{{ url_for('static', filename='assets/img/lg-l.png') }}" class="logo-light" alt="InspAi" decoding="async" loading="lazy"/>
             </span>
         </span>
         <span class="dsnload__row dsnload__row--sibling">
             <span class="dsnload__img">
-                 <img src="{{ url_for('static', filename='assets/img/lg-l.png') }}" class="logo-dark" alt="InspAi" decoding="async" loading="lazy"/>
-            <img src="{{ url_for('static', filename='assets/img/lg.png') }}" class="logo-light" alt="InspAi" decoding="async" loading="lazy"/>
+                 <img src="{{ url_for('static', filename='assets/img/lg.png') }}" class="logo-dark" alt="InspAi" decoding="async" loading="lazy"/>
+            <img src="{{ url_for('static', filename='assets/img/lg-l.png') }}" class="logo-light" alt="InspAi" decoding="async" loading="lazy"/>
             </span>
         </span>
         <span class="dsnload__row dsnload__row--sibling">
             <span class="dsnload__img">
-                <img src="{{ url_for('static', filename='assets/img/lg-l.png') }}" class="logo-dark" alt="InspAi" decoding="async" loading="lazy"/>
-            <img src="{{ url_for('static', filename='assets/img/lg.png') }}" class="logo-light" alt="InspAi" decoding="async" loading="lazy"/>
+                <img src="{{ url_for('static', filename='assets/img/lg.png') }}" class="logo-dark" alt="InspAi" decoding="async" loading="lazy"/>
+            <img src="{{ url_for('static', filename='assets/img/lg-l.png') }}" class="logo-light" alt="InspAi" decoding="async" loading="lazy"/>
             </span>
         </span>
         <span class="dsnload__row dsnload__row--sibling">
             <span class="dsnload__img">
-               <img src="{{ url_for('static', filename='assets/img/lg-l.png') }}" class="logo-dark" alt="InspAi" decoding="async" loading="lazy"/>
-            <img src="{{ url_for('static', filename='assets/img/lg.png') }}" class="logo-light" alt="InspAi" decoding="async" loading="lazy"/>
+               <img src="{{ url_for('static', filename='assets/img/lg.png') }}" class="logo-dark" alt="InspAi" decoding="async" loading="lazy"/>
+            <img src="{{ url_for('static', filename='assets/img/lg-l.png') }}" class="logo-light" alt="InspAi" decoding="async" loading="lazy"/>
             </span>
         </span>
 
@@ -87,24 +87,70 @@
         <nav class="main-navigation ">
             <div class="menu-cover-title header-container dsn-container">MENU</div>
             <ul id="dsn-primary-list" class="primary-nav h2">
+                <li class="nav-item has-sub-menu">
+                    <a title="Home" href="">
+                        <span class="overflow ">Profile</span>
+                    </a>
+                    <ul class="nav-item">
+                        <li class="dsn-back">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30px"
+                                         viewBox="0 0 400.004 400.004" xml:space="preserve">
+                                        <g>
+                                            <path
+                                                d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757 c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072 c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315 C400.004,190.438,392.251,182.686,382.688,182.686z"
+                                            />
+                                        </g>
+                                    </svg>
+                                    <span class="text-toggle-back">
+                                        <span class="text-name">Profile</span>
+                                        <span class="text-back">Back</span>
+                                    </span>
+                                </span>
+                        </li>
+                        {% if g.user %}
+                        <li class="nav-item ">
+                            <a title="Stories" href="" data-dsn-text="Stories">
+                                <span class="overflow">{{ g.user['username'] }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a title="Log Out" href="{{ url_for('auth.logout') }}" data-dsn-text="Logging Out">
+                                <span class="overflow">Log Out</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item ">
+                            <a title="Stories" href="{{ url_for('auth.register') }}" data-dsn-text="Become a StoryTeller">
+                                <span class="overflow">Register</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a title="Single Post" href="{{ url_for('auth.login') }}" data-dsn-text="Log In">
+                                <span class="overflow">Log In</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </li>
                 <li class="nav-item ">
-                    <a title="Home" href="service.html" >
+                    <a title="Home" href="" >
                         <span class="overflow">Home</span>
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a title="Service" href="service.html" >
-                        <span class="overflow">Service</span>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a title="Home" href="about-us.html">
+                    <a title="Service" href="" >
                         <span class="overflow">About</span>
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a title="Home" href="contact.html">
-                        <span class="overflow">Contact</span>
+                    <a title="Home" href="">
+                        <span class="overflow">Stories</span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a title="Home" href="">
+                        <span class="overflow">Share</span>
                     </a>
                 </li>
             </ul>
@@ -166,13 +212,11 @@
     </header>
     <!-- ========== End Menu ========== -->
 
-    {% block header %}{% endblock %}
+    {% block header %}
+    {% endblock %}
     
-    {% block content %}{% endblock %}
-
-    {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-    {% endfor %}
+    {% block content %}
+    {% endblock %}
 
 
 </main>

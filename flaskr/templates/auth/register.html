@@ -27,7 +27,7 @@
                           </p>
                           <div class="dsn-def-btn dsn-hover-icon dsn-icon-heading-color mt-20 d-flex">
                               <a class="dsn-btn dsn-border border-color-default  background-section effect-ajax has-icon-left"
-                                 href="/auth/login" data-dsn-text="LOG IN">
+                                 href="{{ url_for('auth.logout') }}" data-dsn-text="LOG IN">
                                   <span class="dsn-icon dsn-bg-before btn-icon-left heading-color z-index-1">
                                   </span>
                                   <span class="title-btn p-relative  z-index-1 ">
@@ -65,8 +65,12 @@
                                       data-error="username is required."
                                       />
                                   </div>
-                                  <div class="help-block with-errors"></div>
-                              </div>=
+                                  {% for message in get_flashed_messages() %}
+                                    <div class="help-block with-errors">
+                                        {{ message }}
+                                    </div>
+                                  {% endfor %}
+                              </div>
                               <div class="image-zoom move-circle border-color-default border-style border-rdu bg-blue"
                                    data-dsn="parallax">
                                   <input type="submit" value="Register">

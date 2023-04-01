@@ -452,6 +452,22 @@ body:not(.dsn-cursor-effect) #dsn_cursor, body:not(.dsn-cursor-effect) #dsn_curs
   opacity: 1;
 }
 
+::-webkit-scrollbar {
+  width: 0.3vw; /* THIS WILL RESET THE DEFAULT SCORLLBAR STYLING */
+}
+
+/* TO STYLE THE SCROLLBAR TRACK */
+::-webkit-scrollbar-track {
+  background-color: transparent; /* THIS WILL SET THE COLOR OF THE SCROLLBAR TRACK */
+}
+
+/* TO STYLE THE SCROLLBAR THUMB */
+::-webkit-scrollbar-thumb {
+  background-color: #19193f;
+  border: 0.1vw solid transparent;
+  border-radius: 5vw;
+}
+
 #main_root:before, #main_root:after {
   clear: both;
   min-height: 1px;
