@@ -1,24 +1,220 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-  <h1>Flaskr</h1>
-  <ul>
-    {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-    {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
-    {% endif %}
-  </ul>
-</nav>
-<section class="content">
-  <header>
-    {% block header %}{% endblock %}
-  </header>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-  {% block content %}{% endblock %}
-</section>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/lg.png') }}" sizes="32x32"/>
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/lg.png') }}" sizes="192x192"/>
+
+    <title>{% block title %}{% endblock %} - Inspai</title>
+
+    <link href="{{ url_for('static', filename='assets/css/plugins.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+
+</head>
+
+<body class="v-dark dsn-ajax">
+
+
+<div id="dsn_preloader" class="preloader">
+
+    <svg width="100%" height="100%" viewBox="0 0 100 100" class="v-middle" preserveAspectRatio="xMinYMin meet"
+         fill="none">
+        <linearGradient id="linearColors" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="var(--theme-color)"></stop>
+            <stop offset="50%" stop-color="var(--border-color)"></stop>
+            <stop offset="100%" stop-color="var(--assistant-color)"></stop>
+        </linearGradient>
+        <path class="dsn-progress-path" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+    </svg>
+    <div class="v-middle">
+        <img src="{{ url_for('static', filename='assets/img/lg.png') }}" class="logo-dark" alt="InspAi" decoding="async" loading="lazy"/>
+        <div class="loader">
+            <div class="loading">
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-load background-section d-flex align-items-end">
+        <svg class="dsn-separator-bottom dsn-icon-assistant-color" width="100%" height="100%" viewBox="0 0 100 10"
+             preserveAspectRatio="none">
+            <path class="path-anim separator__path" data-dsn-to="M 0 0 C 40 0 55 0 100 0 L 0 0 Z"
+                  vector-effect="non-scaling-stroke" d="M 0 0 C 40 16 75 10 100 0 L 0 0 Z"></path>
+        </svg>
+    </div>
+
+</div>
+
+<main id="main_root" class="main-root">
+
+    <!-- ========== Menu ========== -->
+    <header id="site_menu_header" class="site-header  dsn-container d-none dsn-hamburger">
+        <div class="main-logo">
+            <a href="stories.html" data-dsn-text="InspAI" class="custom-logo-link main-brand effect-ajax" rel="home"
+               aria-current="page">
+                <img src="{{ url_for('static', filename='assets/img/lg.png') }}" class="custom-logo logo-light" alt="InspAI"/>
+                <img src="{{ url_for('static', filename='assets/img/lg-l.png') }}" class="custom-logo logo-dark" alt="InspAI"/>
+            </a>
+        </div>
+        <nav class="main-navigation ">
+            <div class="menu-cover-title header-container dsn-container">MENU</div>
+            <ul id="dsn-primary-list" class="primary-nav h2">
+                <li class="nav-item has-sub-menu">
+                    <a title="Home" href="">
+                        <span class="overflow ">Profile</span>
+                    </a>
+                    <ul class="nav-item">
+                        <li class="dsn-back">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30px"
+                                         viewBox="0 0 400.004 400.004" xml:space="preserve">
+                                        <g>
+                                            <path
+                                                d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757 c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072 c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315 C400.004,190.438,392.251,182.686,382.688,182.686z"
+                                            />
+                                        </g>
+                                    </svg>
+                                    <span class="text-toggle-back">
+                                        <span class="text-name">Profile</span>
+                                        <span class="text-back">Back</span>
+                                    </span>
+                                </span>
+                        </li>
+                        {% if g.user %}
+                        <li class="nav-item ">
+                            <a title="Stories" href="" data-dsn-text="Stories">
+                                <span class="overflow">{{ g.user['username'] }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a title="Log Out" href="/create" data-dsn-text="Logging Out">
+                                <span class="overflow">Share Story</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a title="Log Out" href="{{ url_for('auth.logout') }}" data-dsn-text="Logging Out">
+                                <span class="overflow">Log Out</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item ">
+                            <a title="Stories" href="{{ url_for('auth.register') }}" data-dsn-text="Become a StoryTeller">
+                                <span class="overflow">Register</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a title="Single Post" href="{{ url_for('auth.login') }}" data-dsn-text="Log In">
+                                <span class="overflow">Log In</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </li>
+                <li class="nav-item ">
+                    <a title="Home" href="" >
+                        <span class="overflow">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a title="Service" href="" >
+                        <span class="overflow">About</span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a title="Home" href="">
+                        <span class="overflow">Stories</span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a title="Home" href="">
+                        <span class="overflow">Share</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="container-content  d-flex flex-column justify-content-center section-margin">
+                <div class="nav__info">
+                    <div class="nav-content">
+                        <h5 class="sm-title-block mb-10">Studio</h5>
+                        26-30 New Damietta
+                        El-Mahalla El-Kubra, SK1 66LM
+
+                    </div>
+                    <div class="nav-content mt-30">
+                        <h5 class="sm-title-block mb-10">Contact</h5>
+                        <p class="links over-hidden mb-1">
+                            <a class="link-hover d-block" href="tel:00201004392260" data-hover-text="+00 (2)012 3321">+00 (2)01004392260</a>
+                            <a class="link-hover" href="tel:00201024552406" data-hover-text="+00 (2)012 3321">+00 (2)01024552406</a>
+                        </p>
+                        <p class="links over-hidden"><a class="link-hover" href="mailto:info@dsngrid.com"
+                                                        data-hover-text="info@dsngrid.com">info@example.com</a></p>
+
+                    </div>
+                </div>
+                <div class="nav-social nav-content mt-30">
+                    <div class="nav-social-inner p-relative">
+                        <h5 class="sm-title-block mb-10">Follow us</h5>
+                        <ul style="--dsn-li-name: dsn6;">
+                            <li style="--dsn-li-index: 0;"><a href="stories.html#0" target="_blank"
+                                                              rel="nofollow noopener noreferrer">Dribbble.</a></li>
+                            <li style="--dsn-li-index: 1;"><a href="stories.html#0" target="_blank"
+                                                              rel="nofollow noopener noreferrer">Behance.</a></li>
+                            <li style="--dsn-li-index: 2;"><a href="stories.html#0" target="_blank"
+                                                              rel="nofollow noopener noreferrer">Linkedin.</a></li>
+                            <li style="--dsn-li-index: 3;"><a href="stories.html#0" target="_blank"
+                                                              rel="nofollow noopener noreferrer">Twitter.</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div id="navbar_toggle" class="navbar-toggle">
+            <div class="toggle-icon">
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+            </div>
+            <div class="toggle-text">
+                <div class="text-menu">Menu</div>
+                <div class="text-open">Open</div>
+                <div class="text-close">Close</div>
+            </div>
+        </div>
+        <div class="bg-load background-main"></div>
+
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"
+             class="bg-load dsn-svg-transition">
+            <path vector-effect="non-scaling-stroke" d="M 0 100 V 100 Q 50 100 100 100 V 100 z"/>
+        </svg>
+
+    </header>
+    <!-- ========== End Menu ========== -->
+
+    {% block header %}
+    {% endblock %}
+    
+    {% block content %}
+    {% endblock %}
+
+
+</main>
+<!-- ========== Cursor ========== -->
+<div id="dsn_cursor" class="ball"></div>
+<div id="dsn_cursor_inner" class="ball"></div>
+<!-- ========== End Cursor ========== -->
+
+<!-- ========== Line BG ========== -->
+<div id="line_head"><span class="container"></span></div>
+<!-- ========== End Line BG ========== -->
+
+
+<script src="{{ url_for('static', filename='assets/js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/plugins.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/plugins/dsn-grid.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+  
+</body>
+  
+</html>  

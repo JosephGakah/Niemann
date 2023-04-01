@@ -1,15 +1,97 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}New Post{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
-  <form method="post">
-    <label for="title">Title</label>
-    <input name="title" id="title" value="{{ request.form['title'] }}" required>
-    <label for="body">Body</label>
-    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
-    <input type="submit" value="Save">
-  </form>
-{% endblock %}
+
+<div id="page_wrapper" class="wrapper">
+  <!-- ========== Contact  ========== -->
+  <div class="p-relative contact-form over-hidden section-padding">
+      <div class="dsn-mask p-absolute w-70 left-0 top-0 h-100 background-section"></div>
+      <div class="p-relative container d-grid grid-1-half" data-dsn-gap="30px 60px">
+          <div class="box-form">
+              <h2 class="title-h2 text-upper">
+                  Share your story and we will be all ears for it.
+              </h2>
+              <p class="mt-10">Write your story down in the boxes below</p>
+              <div class="dsn-form mt-20 form-box d-flex flex-column">
+                  <form id="contact-form" class="form w-100" method="post" data-toggle="validator">
+                      <div class="messages"></div>
+                      <div class="input__wrap controls">
+                          <div class="d-grid grid-md-2" data-dsn-gap="0px 30px">
+                              <div class="form-group dsn-up">
+                                  <div class="entry-box">
+                                      <input id="title" type="text" name="title" placeholder="Story Title"
+                                        required="required" value="{{ request.form['title'] }}"
+                                        data-error="Title is required."/>
+                                  </div>
+                                  <div class="help-block with-errors"></div>
+                              </div>
+                              <div class="form-group dsn-up">
+                                  <div class="entry-box">
+                                      <input id="image" type="text" name="image"
+                                        placeholder="Paste the image Address"
+                                        data-error="Valid Image needed"/>
+                                  </div>
+                                  <div class="help-block with-errors"></div>
+                              </div>
+                          </div>
+
+
+                          <div class="form-group dsn-up">
+                              <div class="entry-box">
+
+                              <textarea id="body" class="form-control" name="body" rows="7"
+                                 placeholder="Tell us about your story and the world" required="required"
+                                 data-error="Please, write your story."
+                                 value="{{ request.form['body'] }}"
+                              ></textarea>
+                              </div>
+                              <div class="help-block with-errors"></div>
+                          </div>
+
+                          <div class="d-flex dsn-up">
+                            <div class="image-zoom move-circle border-color-default border-style border-rdu"
+                                 data-dsn-text="Saving your Story">
+                                <input type="submit" value="Save">
+                            </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <div class="box-info p-30 background-theme ">
+              <div class="icon-left dsn-icon-heading-color d-flex align-items-center h-100">
+                  <div class="d-grid dsn-service icon-left align-items-center">
+                      <div class="service-item p-relative grid-item style-box  background-transparent">
+
+                          <div class="service-item-inner number-item h-100">
+                              <div class="service-content p-relative">
+                                  <h4 class="service_title  sm-title-block ">Tips:</h4>
+                                  <div class="service_description mt-10 max-w570 dsn-auto">
+                                    <p>
+                                      No story lives unless someone wants to listen. The stories we love best do live in us forever. So whether you come back by page or by the big screen, Hogwarts will always be there to welcome you home.
+                                      <br/>
+                                      - J.K. Rowling
+                                    </p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+  <!-- ========== Footer ========== -->
+  <footer id="dsn_footer" class="dsn-footer p-relative">
+    <div class="footer-bottom mt-60 pt-30 border-top pb-30 text-center">
+      <p class="over-hidden">
+          © 2023
+          <a href="audread.nilecore.site" class="link-hover" data-hover-text="InspAI" target="_blank">INSPAI</a>
+      </p>
+  </div>
+  </footer>
+  <!-- ========== End Footer ========== -->
+
+  {% endblock %}
