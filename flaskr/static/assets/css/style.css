@@ -62,14 +62,14 @@
     left:50%;
     margin-top:2rem;
     transform: translate(-50%, -50%);
-    height:2px;
+    height:1px;
     width:15rem;
-    background-color: transparent;
+    background-color: gray;
   }
   .loading{
     background-color: white;  
     width:5rem;
-    height:2px;
+    height:1px;
     animation: animation 1.8s infinite;
   }
   
