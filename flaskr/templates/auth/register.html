@@ -45,8 +45,7 @@
                   <h2 class="title-h2 ">Become a StoryTeller</h2>
                   <p class="mt-10">Enter your details to tell stories.</p>
                   <div class="dsn-form mt-20 form-box d-flex flex-column">
-                      <form id="contact-form" class="form w-100" method="post" action=""
-                            data-toggle="validator">
+                      <form method="POST" action="{{ url_for('auth.register') }}" data-toggle="validator">
                           <div class="messages"></div>
                           <div class="input__wrap controls">
                               <div class="form-group dsn-up">

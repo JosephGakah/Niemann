@@ -45,7 +45,7 @@
                   </h2>
                   <p class="mt-10">Enter your details.</p>
                   <div class="dsn-form mt-20 form-box d-flex flex-column">
-                      <form id="contact-form" class="form w-100" method="post" action=""
+                      <form method="POST" action="{{ url_for('auth.login') }}" 
                             data-toggle="validator">
                           <div class="messages"></div>
                           <div class="input__wrap controls">
