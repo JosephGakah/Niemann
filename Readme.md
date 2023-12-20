@@ -5,12 +5,19 @@ Niemann Stories is a storytelling website that is coded using the Flask Python w
 ## Running Locally
 
 Install Virtualenv
+
+```bash
+python<version> -m venv en
+```
 Create a virutal Environment
+
+```bash
+pip install virtualenv
+```
+
 Activate the Virtual Environment
 
 ```bash
-python<version> -m venv env
-pip install virtualenv
 source env/bin/activate
 ```
 
@@ -20,7 +27,13 @@ Install all the necessary libraries
 pip install -r requirements.txt
 ```
 
-Then run
+Initialized the database.
+
+```bash
+flask --app flaskr init-db
+```
+
+Then Run
 
 ```bash
 flask --app flaskr run --debug
