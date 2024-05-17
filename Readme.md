@@ -13,7 +13,7 @@ pip install virtualenv
 Create a virutal Environment
 
 ```bash
-python<version> -m venv en
+python<version> -m venv env
 ```
 
 Activate the Virtual Environment
